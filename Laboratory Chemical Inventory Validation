@@ -1,0 +1,20 @@
+def validate_storage(inventory, limits, incompatibles):
+    violations = []
+    # Check simple limit capacity parameters
+    for item in inventory:
+        cat = item["cat"]
+        if cat in limits and item["qty"] > limits[cat]:
+            violations.append("Limit exceeded: " + cat)
+    # Scan for restricted matching pairs inside current footprint
+    for c1, c2 in incompatibles:
+        has_c1 = False
+        has_c2 = False
+        for item in inventory:
+            if item["cat"] == c1: has_c1 = True
+            if item["cat"] == c2: has_c2 = True
+        if has_c1 and has_c2:
+            violations.append("Incompatible: " + c1 + " and " + c2)
+    return {"valid": len(violations) == 0, "errors": violations}
+
+inventory = [{"cat": "Acid", "qty": 50}, {"cat": "Base", "qty": 20}]
+print("22:", validate_storage(inventory, {"Acid": 40}, [("Acid", "Base")]))
