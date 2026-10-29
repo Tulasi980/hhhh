@@ -36,7 +36,7 @@ def validate_results(students, pass_mark, max_mark, grace_pool):
 
 student_data = {
     "John": {"Math": 32, "Science": 45, "History": 78},  
-    "Mary": {"Math": 28, "Science": 30, "History": 85}   # Math needs 7, exceeds pool of 5
+    "Mary": {"Math": 28, "Science": 30, "History": 85}   
 }
 
 print("11:", validate_results(student_data, pass_mark=35, max_mark=100, grace_pool=5))
