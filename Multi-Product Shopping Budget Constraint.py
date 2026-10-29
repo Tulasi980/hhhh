@@ -1,5 +1,5 @@
 def optimize_basket(basket, budget):
-    # Process items sequentially and reduce quantities if above total budget ceiling
+
     for item in basket:
         while item["qty"] > 0:
             total = 0
