@@ -4,7 +4,7 @@ def calculate_fines(violations, base_rules):
     for v_type, is_repeat in violations:
         fine = base_rules[v_type]
         if is_repeat:
-            fine = fine * 2  # Double penalty for repeat violations
+            fine = fine * 2  
         total += fine
         if v_type == "DUI":
             disqualified = True
