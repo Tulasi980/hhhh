@@ -4,8 +4,10 @@ def optimize_basket(basket, budget):
         while item["qty"] > 0:
             total = 0
             for i in basket:
-                total += i["qty"] * i["price"]
+                
+               total += i["qty"] * i["price"]
             if total <= budget:
+                
                 break
             item["qty"] -= 1
     return basket
