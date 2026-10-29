@@ -6,16 +6,16 @@ def validate_results(students, pass_mark, max_mark, grace_pool):
         pool_left = grace_pool
         failed_count = 0
         
-        # Apply grace marks to failing subjects if pool permits
+        
         for sub in marks:
             score = marks[sub]
             if score < pass_mark:
                 needed = pass_mark - score
                 if pool_left >= needed:
                     pool_left -= needed
-                    score = pass_mark  # Bailed out by grace pool
+                    score = pass_mark  
             
-            # Bound check: Ensure scores never exceed maximum allowable marks
+            
             if score > max_mark:
                 score = max_mark
                 
@@ -24,7 +24,7 @@ def validate_results(students, pass_mark, max_mark, grace_pool):
                 
             updated_marks[sub] = score
             
-        # Determine final status classification
+        
         if failed_count == 0:
             status = "Pass"
         else:
@@ -33,9 +33,9 @@ def validate_results(students, pass_mark, max_mark, grace_pool):
         results[name] = {"marks": updated_marks, "status": status}
     return results
 
-# Test Case
+
 student_data = {
-    "John": {"Math": 32, "Science": 45, "History": 78},  # Math gets 3 grace marks to pass
+    "John": {"Math": 32, "Science": 45, "History": 78},  
     "Mary": {"Math": 28, "Science": 30, "History": 85}   # Math needs 7, exceeds pool of 5
 }
 
